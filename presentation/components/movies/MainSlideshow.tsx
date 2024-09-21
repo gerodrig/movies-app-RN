@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
-import { View, Text, useWindowDimensions } from 'react-native';
-
+import { useRef } from 'react';
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel';
+import { View, useWindowDimensions } from 'react-native';
 
-import { Movie } from '@/infrastructure/interfaces';
+
 import MoviePoster from './MoviePoster';
+import type { Movie } from '@/infrastructure/interfaces';
 
 interface Props {
   movies: Movie[];

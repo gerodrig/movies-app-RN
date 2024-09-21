@@ -1,8 +1,8 @@
 import { View, Text, ScrollView } from 'react-native';
-import React from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import { useMovies } from '@/presentation/hooks/useMovies';
 import Loader from '@/presentation/components/shared/Loader';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MainSlideshow from '@/presentation/components/movies/MainSlideshow';
 import MovieHorizontalList from '@/presentation/components/movies/MovieHorizontalList';
 
@@ -40,8 +40,9 @@ const HomeScreen = () => {
         {/* Top rated movies */}
         <MovieHorizontalList
           title="Top Rated Movies"
-          movies={topRatedQuery.data}
+          movies={topRatedQuery.data?.pages.flat()}
           className="mb-5"
+          loadNextPage={topRatedQuery.fetchNextPage}
         />
         {/* Upcoming movies */}
         <MovieHorizontalList
